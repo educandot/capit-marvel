@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Pedagógica: Ajuste de Texto e Imagem Nítida</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset de margens padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0b0b0e; 
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* O Bloco colorido limitado (metade da largura da tela) */
+        .espaco-atividade {
+            position: relative;
+            width: 50vw; 
+            height: 380px;
+            /* Gradiente solicitado */
+            background: linear-gradient(45deg, #d41e31, #491f8f);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 30px; /* Reduzido o padding para o texto ir mais para a esquerda */
+        }
+
+        /* Área do texto (Surgindo de forma bem visível e deslocado para a esquerda) */
+        .conteudo-texto {
+            max-width: 45%; /* Reduzido o limite para não trombar com a imagem */
+            color: #ffffff;
+            opacity: 0;
+            transform: translateX(-60px); /* Começa mais para a esquerda ainda */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            z-index: 1; /* Mantém o texto na camada correta */
+        }
+
+        /* Título destacado e nítido */
+        .conteudo-texto h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            color: #f1c40f; /* Dourado */
+            text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1px;
+        }
+
+        /* Corpo do texto muito mais visível, nítido e forte */
+        .conteudo-texto p {
+            font-size: 1.05rem;
+            font-weight: 700; /* Texto em negrito/bold para máxima leitura */
+            line-height: 1.5;
+            color: #ffffff;
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra preta para destacar do fundo */
+        }
+
+        /* Configuração da imagem (Centralizada e totalmente nítida) */
+        .imagem-personagem {
+            position: absolute;
+            height: 125%; 
+            top: -25%; /* Mantém a cabeça para fora do background colorido */
+            left: 50%; /* Inicia exatamente no centro */
+            transform: translateX(-50%) scale(1); /* Base com escala padrão */
+            transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+            z-index: 2; /* Garante que ela fique por cima ao iniciar */
+            
+            /* Imagem limpa e nítida (Removido efeitos de blend/sobreposição) */
+            filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.5)); 
+        }
+
+        /* --- COMPORTAMENTO DO MOUSE (HOVER) --- */
+
+        /* Quando o mouse passa no bloco: A imagem abre espaço indo para a direita e aumenta 10% */
+        .espaco-atividade:hover .imagem-personagem {
+            left: 76%; 
+            transform: translateX(-50%) scale(1.1); /* Mantém o alinhamento centralizado do eixo e aumenta 10% */
+        }
+
+        /* Quando o mouse passa no bloco: O texto aparece na extrema esquerda */
+        .espaco-atividade:hover .conteudo-texto {
+            opacity: 1;
+            transform: translateX(0); /* Move para a posição final correta à esquerda */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="espaco-atividade">
+        
+        <div class="conteudo-texto">
+            <h1>Capitã Marvel</h1>
+            <p>Carol Danvers usa seus poderes cósmicos obtidos através do Tesseract para proteger o universo. Uma força indestrutível que lidera as linhas de frente intergalácticas.</p>
+        </div>
+
+        <img src="marvel.png" alt="Capitã Marvel" class="imagem-personagem">
+    
+    </div>
+
+</body>
+</html>
