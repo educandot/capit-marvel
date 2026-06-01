@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade Pedagógica: Ajuste de Texto e Imagem Nítida</title>
+    <title>Atividade Pedagógica: Ajuste de Posição Inicial</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset de margens padrão */
         * {
             margin: 0;
             padding: 0;
@@ -26,79 +25,73 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* O Bloco colorido limitado (metade da largura da tela) */
+        /* O fundo colorido agora está menor horizontalmente (40vw) */
         .espaco-atividade {
             position: relative;
-            width: 50vw; 
+            width: 40vw; 
             height: 380px;
-            /* Gradiente solicitado */
             background: linear-gradient(45deg, #d41e31, #491f8f);
             border-radius: 20px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: 30px; /* Reduzido o padding para o texto ir mais para a esquerda */
+            padding: 30px;
         }
 
-        /* Área do texto (Surgindo de forma bem visível e deslocado para a esquerda) */
+        /* Conteúdo do texto */
         .conteudo-texto {
-            max-width: 45%; /* Reduzido o limite para não trombar com a imagem */
+            max-width: 50%;
             color: #ffffff;
             opacity: 0;
-            transform: translateX(-60px); /* Começa mais para a esquerda ainda */
+            transform: translateX(-30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            z-index: 1; /* Mantém o texto na camada correta */
+            z-index: 1;
         }
 
-        /* Título destacado e nítido */
         .conteudo-texto h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             line-height: 1.1;
             margin-bottom: 12px;
             text-transform: uppercase;
-            color: #f1c40f; /* Dourado */
+            color: #f1c40f;
             text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.6);
-            letter-spacing: 1px;
         }
 
-        /* Corpo do texto muito mais visível, nítido e forte */
         .conteudo-texto p {
-            font-size: 1.05rem;
-            font-weight: 700; /* Texto em negrito/bold para máxima leitura */
-            line-height: 1.5;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.4;
             color: #ffffff;
-            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra preta para destacar do fundo */
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        /* Configuração da imagem (Centralizada e totalmente nítida) */
+        /* Imagem configurada para iniciar na parte esquerda do fundo colorido */
         .imagem-personagem {
             position: absolute;
             height: 125%; 
-            top: -25%; /* Mantém a cabeça para fora do background colorido */
-            left: 50%; /* Inicia exatamente no centro */
-            transform: translateX(-50%) scale(1); /* Base com escala padrão */
-            transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            top: -25%; /* Mantém apenas a cabeça para fora no topo */
+            bottom: 0; /* Alinha a base inferior para não passar para baixo do card */
+            left: 30%; /* Posição inicial concentrada na parte esquerda do fundo */
+            transform: translateX(-50%);
+            transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
-            z-index: 2; /* Garante que ela fique por cima ao iniciar */
-            
-            /* Imagem limpa e nítida (Removido efeitos de blend/sobreposição) */
+            z-index: 2;
             filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.5)); 
         }
 
-        /* --- COMPORTAMENTO DO MOUSE (HOVER) --- */
+        /* --- COMPORTAMENTO HOVER --- */
 
-        /* Quando o mouse passa no bloco: A imagem abre espaço indo para a direita e aumenta 10% */
+        /* Ao passar o mouse no container: a imagem vai para a direita */
         .espaco-atividade:hover .imagem-personagem {
-            left: 76%; 
-            transform: translateX(-50%) scale(1.1); /* Mantém o alinhamento centralizado do eixo e aumenta 10% */
+            left: 75%; 
         }
 
-        /* Quando o mouse passa no bloco: O texto aparece na extrema esquerda */
+        /* Ao passar o mouse no container: o texto aparece na esquerda */
         .espaco-atividade:hover .conteudo-texto {
             opacity: 1;
-            transform: translateX(0); /* Move para a posição final correta à esquerda */
+            transform: translateX(0);
         }
     </style>
 </head>
